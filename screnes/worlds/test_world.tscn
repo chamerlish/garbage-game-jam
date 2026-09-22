@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bjpnu0m3vj1i7"]
+
+[ext_resource type="PackedScene" uid="uid://byuoy2y4ugnqo" path="res://screnes/cards/deck_hand.tscn" id="1_rt3y1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rt3y1"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_p26p0"]
+sky_material = SubResource("ProceduralSkyMaterial_rt3y1")
+
+[sub_resource type="Environment" id="Environment_e7h37"]
+background_mode = 2
+sky = SubResource("Sky_p26p0")
+
+[node name="TestWorld" type="Node3D" unique_id=1900354952]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=122081674]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=242738542]
+environment = SubResource("Environment_e7h37")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=432723764]
+transform = Transform3D(1, 0, 0, 0, 0.94447494, 0.32858342, 0, -0.32858342, 0.94447494, 0, 1.9236815, 3.2357535)
+
+[node name="DeckHand" parent="." unique_id=1660543274 instance=ExtResource("1_rt3y1")]
+transform = Transform3D(1, 0, 0, 0, 0.9260664, 0.37736055, 0, -0.37736055, 0.9260664, 0, 0, 0)

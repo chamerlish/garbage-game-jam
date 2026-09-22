@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://byuoy2y4ugnqo"]
+
+[ext_resource type="Script" uid="uid://coljov4mgvs3q" path="res://scripts/cards/deck_hand.gd" id="1_md1ib"]
+
+[node name="DeckHand" type="Node3D" unique_id=1660543274]
+script = ExtResource("1_md1ib")

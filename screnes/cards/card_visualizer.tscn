@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cny4qb1jocap5"]
+
+[ext_resource type="Texture2D" uid="uid://mewog3phipf1" path="res://icon.svg" id="1_lwqkj"]
+[ext_resource type="Script" uid="uid://beh8dd6nciqwc" path="res://scripts/cards/card_visualizer.gd" id="2_ysbnb"]
+
+[node name="CardVisualizer" type="Sprite3D" unique_id=1324399751]
+texture = ExtResource("1_lwqkj")
+script = ExtResource("2_ysbnb")
