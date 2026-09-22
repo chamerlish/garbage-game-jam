@@ -1,4 +1,4 @@
-extends Node3D
+class_name DeckHand extends Node3D
 
 var held_cards: Array[CardVisualizer]
 
@@ -8,7 +8,6 @@ const CARD_VIS_PACKED: PackedScene = preload("res://screnes/cards/card_visualize
 
 func _init() -> void:
 	CardManager.card_picked.connect(pick_card)
-	
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
@@ -24,6 +23,17 @@ func pick_card(card: Card):
 	
 	reorder_list()
 
+
+var last_inspected_transform: Transform3D
+var last_inspected_card: CardVisualizer
+
+func inspect_card(card_vis: CardVisualizer):
+	last_inspected_transform = card_vis.get_global_transform()
+	last_inspected_card = card_vis
+	card_vis.on_click.call_deferred()
+
+func uninspect_card():
+	last_inspected_card.deselect.call_deferred(last_inspected_transform)
 
 func reorder_list():
 	var total_width := (held_cards.size() - 1) * card_spacing

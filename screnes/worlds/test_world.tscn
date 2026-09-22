@@ -26,7 +26,8 @@ environment = SubResource("Environment_e7h37")
 [node name="DeckHand" parent="." unique_id=1660543274 instance=ExtResource("1_rt3y1")]
 transform = Transform3D(1, 0, 0, 0, 0.9260664, 0.37736055, 0, -0.37736055, 0.9260664, 0, 0, 0)
 
-[node name="PlayerCamera" type="Camera3D" parent="." unique_id=732649040]
+[node name="PlayerCamera" type="Camera3D" parent="." unique_id=732649040 node_paths=PackedStringArray("deck_hand")]
 transform = Transform3D(1, 0, 0, 0, 0.95105654, 0.309017, 0, -0.309017, 0.95105654, 0, 1.9182079, 3.7156918)
 script = ExtResource("2_p26p0")
+deck_hand = NodePath("../DeckHand")
 metadata/_custom_type_script = "uid://dwjh7mp2ee40e"

@@ -54,9 +54,7 @@ var inspinspection_transform: Transform3D = Transform3D(
 func on_click():
 	set_global_transform(inspinspection_transform)
 	is_inspecting = true
-	pass
 
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.is_pressed():
-		is_inspecting = false
+func deselect(normal_card_position: Transform3D):
+	set_global_transform(normal_card_position)
+	is_inspecting = false

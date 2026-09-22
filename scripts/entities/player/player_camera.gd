@@ -1,10 +1,18 @@
 class_name PlayerCamera extends Camera3D
 
 const CLICK_DISTANCE: int = 1000
+@export var deck_hand: DeckHand
+
+var is_inspecting: bool = false
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if not event.is_pressed():
+			return
+		
+		if is_inspecting:
+			is_inspecting = false
+			deck_hand.uninspect_card()
 			return
 		
 		if not event.button_index == MOUSE_BUTTON_LEFT:
@@ -19,5 +27,9 @@ func _input(event: InputEvent) -> void:
 		
 		if result:
 			var clicked_object: Node3D = result["collider"]
-			if clicked_object is InteractableElements:
-				clicked_object.on_click.call_deferred()
+			if not clicked_object is InteractableElements:
+				return
+			
+			if clicked_object is CardVisualizer:
+				is_inspecting = true
+				deck_hand.inspect_card(clicked_object)
