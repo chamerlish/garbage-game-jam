@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bjpnu0m3vj1i7"]
 
 [ext_resource type="PackedScene" uid="uid://byuoy2y4ugnqo" path="res://screnes/cards/deck_hand.tscn" id="1_rt3y1"]
+[ext_resource type="Script" uid="uid://dwjh7mp2ee40e" path="res://scripts/entities/player/player_camera.gd" id="2_p26p0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rt3y1"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -22,8 +23,10 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=242738542]
 environment = SubResource("Environment_e7h37")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=432723764]
-transform = Transform3D(1, 0, 0, 0, 0.94447494, 0.32858342, 0, -0.32858342, 0.94447494, 0, 1.9236815, 3.2357535)
-
 [node name="DeckHand" parent="." unique_id=1660543274 instance=ExtResource("1_rt3y1")]
 transform = Transform3D(1, 0, 0, 0, 0.9260664, 0.37736055, 0, -0.37736055, 0.9260664, 0, 0, 0)
+
+[node name="PlayerCamera" type="Camera3D" parent="." unique_id=732649040]
+transform = Transform3D(1, 0, 0, 0, 0.95105654, 0.309017, 0, -0.309017, 0.95105654, 0, 1.9182079, 3.7156918)
+script = ExtResource("2_p26p0")
+metadata/_custom_type_script = "uid://dwjh7mp2ee40e"

@@ -1,4 +1,4 @@
-class_name CardVisualizer extends Sprite3D
+class_name CardVisualizer extends InteractableElements
 
 @export var max_tilt: float = 15.0
 @export var tilt_speed: float = 10.0
@@ -10,11 +10,10 @@ var is_inspecting: bool # as in its selected specifically to inspect
 
 @export var card_instance: Card
 
-func _init(card_ins: Card) -> void:
-	card_instance = card_ins
+@onready var sprite_node: Sprite3D = $Sprite3D
 
-func _ready() -> void:
-	texture = preload("res://icon.svg")
+#func _init(card_ins: Card) -> void:
+#	card_instance = card_ins
 
 func _process(delta: float) -> void:
 	look_at_mouse(delta)
@@ -35,8 +34,8 @@ func look_at_mouse(delta: float):
 	if hit_position != null:
 		var local_position: Vector3 = to_local(hit_position)
 
-		var half_width: float = texture.get_width() * pixel_size * 0.5
-		var half_height: float = texture.get_height() * pixel_size * 0.5
+		var half_width: float = sprite_node.texture.get_width() * sprite_node.pixel_size * 0.5
+		var half_height: float = sprite_node.texture.get_height() * sprite_node.pixel_size * 0.5
 
 		var normalized_x: float = clamp(local_position.x / half_width, -1.0, 1.0)
 		var normalized_y: float = clamp(local_position.y / half_height, -1.0, 1.0)
@@ -46,3 +45,18 @@ func look_at_mouse(delta: float):
 
 	rotation.x = lerp_angle(rotation.x, target_rotation.x, tilt_speed * delta)
 	rotation.y = lerp_angle(rotation.y, target_rotation.y, tilt_speed * delta)
+
+var inspinspection_transform: Transform3D = Transform3D(
+	Basis.from_euler(Vector3(deg_to_rad(-18.0), 0, 0)),
+	Vector3(0.0, 1.41, 2.335)
+)
+
+func on_click():
+	set_global_transform(inspinspection_transform)
+	is_inspecting = true
+	pass
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.is_pressed():
+		is_inspecting = false

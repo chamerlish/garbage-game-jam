@@ -4,6 +4,8 @@ var held_cards: Array[CardVisualizer]
 
 var card_spacing: int = 1
 
+const CARD_VIS_PACKED: PackedScene = preload("res://screnes/cards/card_visualizer.tscn")
+
 func _init() -> void:
 	CardManager.card_picked.connect(pick_card)
 	
@@ -13,7 +15,9 @@ func _input(event: InputEvent) -> void:
 		CardManager.pick_card(Card.new())
 
 func pick_card(card: Card):
-	var card_vis = CardVisualizer.new(card)
+	#var card_vis = CardVisualizer.new(card)
+	
+	var card_vis: CardVisualizer = CARD_VIS_PACKED.instantiate()
 	
 	add_child(card_vis)
 	held_cards.append(card_vis)
