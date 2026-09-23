@@ -51,3 +51,4 @@ func reorder_list():
 
 	for i in held_cards.size():
 		held_cards[i].position.x = start_x + i * card_spacing
+		held_cards[i].position.y = self.position.y

@@ -9,7 +9,7 @@ var enemy_placed_cards: Array[Card]
 
 var cards_in_hand: Array[Card]
 
-const MAX_PLACABLE_CARD: int = 2
+const MAX_PLACABLE_CARD: int = 4
 
 func pick_card(card_to_pick: Card):
 	cards_in_hand.append(card_to_pick)
@@ -30,5 +30,4 @@ func place_card(card_vis: CardVisualizer, location: CardTablePlacer):
 	card_placed.emit(card_vis, location)
 	
 func fail_place_card():
-	print("je")
 	fail_card_placed.emit()
