@@ -33,9 +33,6 @@ func _input(event: InputEvent) -> void:
 			
 			if result and result["collider"] is CardVisualizer:
 				dragged_card = result["collider"]
-			
-			# ADD DRAG START CODE HERE
-			
 		else:
 			
 			if is_inspecting:
