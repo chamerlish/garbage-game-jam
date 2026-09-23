@@ -7,13 +7,23 @@ var card_spacing: int = 1
 const CARD_VIS_PACKED: PackedScene = preload("res://screnes/cards/card_visualizer.tscn")
 
 func _init() -> void:
-	CardManager.card_picked.connect(pick_card)
+	CardManager.card_picked.connect(_on_pick_card)
+	CardManager.card_placed.connect(_on_card_placed)
+	CardManager.fail_card_placed.connect(_on_failed_placed)
+
+func _on_failed_placed():
+	print("je")
+	reorder_list()
+
+func _on_card_placed(card: CardVisualizer, _location: CardTablePlacer):
+	held_cards.erase(card)
+	reorder_list()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
 		CardManager.pick_card(Card.new())
 
-func pick_card(card: Card):
+func _on_pick_card(card: Card):
 	#var card_vis = CardVisualizer.new(card)
 	
 	var card_vis: CardVisualizer = CARD_VIS_PACKED.instantiate()
@@ -36,8 +46,8 @@ func uninspect_card():
 	last_inspected_card.deselect.call_deferred(last_inspected_transform)
 
 func reorder_list():
-	var total_width := (held_cards.size() - 1) * card_spacing
-	var start_x := -total_width / 2.0
+	var total_width: float = (held_cards.size() - 1) * card_spacing # i am removing one from size because i am already appending an element to it i dont want to take it on consideration
+	var start_x: float = -total_width / 2.0
 
 	for i in held_cards.size():
 		held_cards[i].position.x = start_x + i * card_spacing

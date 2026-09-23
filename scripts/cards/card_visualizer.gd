@@ -46,10 +46,8 @@ func look_at_mouse(delta: float):
 	rotation.x = lerp_angle(rotation.x, target_rotation.x, tilt_speed * delta)
 	rotation.y = lerp_angle(rotation.y, target_rotation.y, tilt_speed * delta)
 
-var inspinspection_transform: Transform3D = Transform3D(
-	Basis.from_euler(Vector3(deg_to_rad(-18.0), 0, 0)),
-	Vector3(0.0, 1.41, 2.335)
-)
+
+@onready var inspinspection_transform: Transform3D = get_viewport().get_camera_3d().global_transform.translated_local(Vector3(0.0, 0.0, -1.5))
 
 func on_click():
 	set_global_transform(inspinspection_transform)
