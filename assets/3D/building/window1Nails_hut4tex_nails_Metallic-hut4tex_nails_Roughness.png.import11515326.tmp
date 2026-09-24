@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxabp22nojgwd"
-path.s3tc="res://.godot/imported/window1Nails_hut4tex_nails_Normal.png-5b45357d6220c705bae6dfe9904b20b7.s3tc.ctex"
+uid="uid://dpub1belhuk4c"
+path.s3tc="res://.godot/imported/window1Nails_hut4tex_nails_Metallic-hut4tex_nails_Roughness.png-ff4e191bfe2803866048ec6ad6d79223.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "1ed9c750a433c488a0c80a33580d7044"
+}
 
 [deps]
 
-source_file="res://assets/3D/building/window1Nails_hut4tex_nails_Normal.png"
-dest_files=["res://.godot/imported/window1Nails_hut4tex_nails_Normal.png-5b45357d6220c705bae6dfe9904b20b7.s3tc.ctex"]
+source_file="res://assets/3D/building/window1Nails_hut4tex_nails_Metallic-hut4tex_nails_Roughness.png"
+dest_files=["res://.godot/imported/window1Nails_hut4tex_nails_Metallic-hut4tex_nails_Roughness.png-ff4e191bfe2803866048ec6ad6d79223.s3tc.ctex"]
 
 [params]
 
@@ -22,12 +25,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://assets/3D/building/window1Nails_hut4tex_nails_Normal.png"
+roughness/mode=0
+roughness/src_normal=""
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

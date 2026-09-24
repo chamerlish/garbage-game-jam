@@ -7,7 +7,7 @@ var placed_cards: Array[CardVisualizer]
 
 @onready var card_spawner_position: Marker3D = $CardSpawnerPosition
 
-var card_spacing: int = 2
+var card_spacing: float = 0.25
 
 func on_click():
 	# TODO: change camera position :D

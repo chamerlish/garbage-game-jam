@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://bjpnu0m3vj1i7"]
+
+[ext_resource type="Script" uid="uid://db4f5b4thswif" path="res://scripts/interactable_elements/card_table_placer.gd" id="1_e7h37"]
+[ext_resource type="PackedScene" uid="uid://byuoy2y4ugnqo" path="res://scenes/cards/deck_hand.tscn" id="1_rt3y1"]
+[ext_resource type="Script" uid="uid://dwjh7mp2ee40e" path="res://scripts/entities/player/player_camera.gd" id="2_p26p0"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rt3y1"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_p26p0"]
+sky_material = SubResource("ProceduralSkyMaterial_rt3y1")
+
+[sub_resource type="Environment" id="Environment_e7h37"]
+background_mode = 2
+sky = SubResource("Sky_p26p0")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bhunq"]
+size = Vector3(5.9697266, 1.3486328, 1.8815918)
+
+[node name="TestWorld" type="Node3D" unique_id=1900354952]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=122081674]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=242738542]
+environment = SubResource("Environment_e7h37")
+
+[node name="Player" type="Node3D" parent="." unique_id=488144879]
+transform = Transform3D(1, 0, 0, 0, 0.9260664, 0.37736055, 0, -0.37736055, 0.9260664, 0, 1.0158105, 2.4401958)
+
+[node name="DeckHand" parent="Player" unique_id=1660543274 instance=ExtResource("1_rt3y1")]
+transform = Transform3D(1, 0, 0, 0, 0.9781479, 0.20791185, 0, -0.20791185, 0.9781479, 0, 0.2782895, -0.05936408)
+
+[node name="PlayerCamera" type="Camera3D" parent="Player" unique_id=732649040 node_paths=PackedStringArray("deck_hand")]
+transform = Transform3D(1, 0, 0, 0, 0.97814775, 0.20791173, 0, -0.20791173, 0.97814775, 0, 2.5592937, 2.4868104)
+script = ExtResource("2_p26p0")
+deck_hand = NodePath("../DeckHand")
+metadata/_custom_type_script = "uid://dwjh7mp2ee40e"
+
+[node name="CardTablePlacer" type="Area3D" parent="Player" unique_id=1374895155]
+transform = Transform3D(1, 0, 0, 0, 0.9260669, -0.37736082, 0, 0.37736082, 0.9260669, 0, -0.42134693, -1.6578717)
+script = ExtResource("1_e7h37")
+metadata/_custom_type_script = "uid://db4f5b4thswif"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/CardTablePlacer" unique_id=136198245]
+shape = SubResource("BoxShape3D_bhunq")
+
+[node name="CardSpawnerPosition" type="Marker3D" parent="Player/CardTablePlacer" unique_id=1443873802]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.51243454, -3.0543468e-08)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1583669382]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1140507019]
+size = Vector3(5, 1, 4.856)

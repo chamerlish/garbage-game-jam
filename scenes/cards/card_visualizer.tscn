@@ -4,14 +4,27 @@
 [ext_resource type="Script" uid="uid://beh8dd6nciqwc" path="res://scripts/cards/card_visualizer.gd" id="2_ysbnb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bhunq"]
-size = Vector3(1.5314636, 1.7712402, 0.28045654)
+size = Vector3(0.21950391, 0.26004687, 0.02)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1esiv"]
+albedo_texture = ExtResource("1_lwqkj")
+
+[sub_resource type="BoxMesh" id="BoxMesh_qr0ht"]
+material = SubResource("StandardMaterial3D_1esiv")
+size = Vector3(0.21777344, 0.2605896, 0.01953125)
 
 [node name="CardVisualizer" type="Area3D" unique_id=769428700]
 script = ExtResource("2_ysbnb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1410468243]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.008468628, -0.014038086, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.836653e-05, 0.13111265, 0)
 shape = SubResource("BoxShape3D_bhunq")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1324399751]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2538729, 0)
+visible = false
 texture = ExtResource("1_lwqkj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1169076373]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13123801, 0)
+mesh = SubResource("BoxMesh_qr0ht")

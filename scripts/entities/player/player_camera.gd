@@ -12,6 +12,7 @@ func check_click(mouse: InputEventMouse, exclude: CollisionObject3D = null) -> D
 	var mouse_position: Vector2 = mouse.position
 	var ray_origin: Vector3 = project_ray_origin(mouse_position)
 	var ray_end: Vector3 = ray_origin + project_ray_normal(mouse_position) * CLICK_DISTANCE
+	
 	var query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(ray_origin, ray_end)
 	query.collide_with_areas = true
 	
@@ -53,22 +54,22 @@ func _input(event: InputEvent) -> void:
 			
 			if is_dragging:
 				is_dragging = false
-				var is_successful: bool = clicked_object is CardTablePlacer
+				var is_successful: bool = clicked_object is CardTablePlacer and dragged_card
 				if is_successful:
 					CardManager.place_card(dragged_card, clicked_object)
+					dragged_card.can_drag = false
 				else:
 					CardManager.fail_place_card()
 				return
 				
 			if clicked_object is CardVisualizer:
-				is_inspecting = true
 				deck_hand.inspect_card.call_deferred(clicked_object)
 	
 	elif event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		if event.position.distance_to(drag_start_position) > 5.0:
 			is_dragging = true
 		
-		if is_dragging and dragged_card:
+		if is_dragging and dragged_card and dragged_card.can_drag:
 			var ray_origin: Vector3 = project_ray_origin(event.position)
 			var ray_direction: Vector3 = project_ray_normal(event.position)
 			

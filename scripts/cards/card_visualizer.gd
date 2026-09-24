@@ -5,6 +5,7 @@ class_name CardVisualizer extends InteractableElements
 
 var target_rotation: Vector3 = Vector3.ZERO
 
+var can_drag: bool = true
 
 var is_inspecting: bool # as in its selected specifically to inspect
 

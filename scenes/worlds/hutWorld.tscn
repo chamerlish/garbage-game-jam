@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://djym8bj7oc38c" path="res://assets/3D/building/ceiling.glb" id="5_r714w"]
 [ext_resource type="PackedScene" uid="uid://cbivqv7tr2ry0" path="res://assets/3D/building/curain1Scene.tscn" id="6_xi46d"]
 [ext_resource type="PackedScene" uid="uid://c3bh8he5xw8wt" path="res://assets/3D/building/window1InnerWindowFrame.glb" id="7_qsvcv"]
+[ext_resource type="PackedScene" uid="uid://df4l6eibd8km8" path="res://assets/3D/misc/crystal_ball_2.tscn" id="7_xi46d"]
 [ext_resource type="PackedScene" uid="uid://bdqfd1cvskidr" path="res://assets/3D/building/window1Nails.glb" id="8_c6vm0"]
 [ext_resource type="PackedScene" uid="uid://cjn8sv1mkg317" path="res://assets/3D/building/window1OuterWindowFrame.glb" id="9_7ky1m"]
 [ext_resource type="PackedScene" uid="uid://csxynj2d11plg" path="res://assets/3D/building/window2InnerWindowFrame.glb" id="10_vqbxc"]
@@ -15,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://d2gebsscsxnr" path="res://assets/3D/building/curtain2Scene.tscn" id="13_1ofmy"]
 [ext_resource type="PackedScene" uid="uid://dlcxnyw2imi8s" path="res://assets/3D/misc/diningTable.glb" id="14_6eymq"]
 [ext_resource type="PackedScene" uid="uid://dgmj6y7d2aovq" path="res://assets/3D/misc/playMat.glb" id="15_csont"]
-[ext_resource type="PackedScene" uid="uid://dojuieyso33v" path="res://assets/3D/misc/crystalBall.glb" id="16_uta23"]
 [ext_resource type="PackedScene" uid="uid://dif2k5qtjj5yf" path="res://assets/3D/misc/shelf.glb" id="17_ad5ke"]
 [ext_resource type="PackedScene" uid="uid://c6ndspemuyaf" path="res://assets/3D/misc/workbench.glb" id="18_x31pa"]
 [ext_resource type="PackedScene" uid="uid://bu7hikv8j1w43" path="res://assets/3D/misc/workbench_table_cloth_2.tscn" id="19_hv3qo"]
@@ -25,6 +25,9 @@
 [ext_resource type="PackedScene" uid="uid://03fd4ua2vwdo" path="res://assets/3D/building/cornerBeamsScene.tscn" id="23_vutj0"]
 [ext_resource type="PackedScene" uid="uid://dhpyttfwouw4k" path="res://assets/3D/building/window1GlassScene.tscn" id="24_mxc3r"]
 [ext_resource type="PackedScene" uid="uid://bwll8yngxywp" path="res://assets/3D/building/window2GlassScene.tscn" id="25_3l0vr"]
+[ext_resource type="PackedScene" uid="uid://byuoy2y4ugnqo" path="res://scenes/cards/deck_hand.tscn" id="26_xi46d"]
+[ext_resource type="Script" uid="uid://dwjh7mp2ee40e" path="res://scripts/entities/player/player_camera.gd" id="27_qsvcv"]
+[ext_resource type="Script" uid="uid://db4f5b4thswif" path="res://scripts/interactable_elements/card_table_placer.gd" id="28_c6vm0"]
 
 [sub_resource type="Sky" id="Sky_ltmym"]
 
@@ -33,6 +36,9 @@ background_mode = 2
 sky = SubResource("Sky_ltmym")
 tonemap_mode = 3
 ssao_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ky1m"]
+size = Vector3(0.9719238, 0.4468994, 0.38635254)
 
 [node name="HutWorld" type="Node3D" unique_id=1722661651]
 
@@ -48,7 +54,8 @@ ssao_enabled = true
 
 [node name="playMat2" parent="." unique_id=691269640 instance=ExtResource("15_csont")]
 
-[node name="crystalBall2" parent="." unique_id=1318745677 instance=ExtResource("16_uta23")]
+[node name="crystalBall" parent="." unique_id=1609027879 instance=ExtResource("7_xi46d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4838043, 0.91354793, 0.79082406)
 
 [node name="shelf2" parent="." unique_id=315832718 instance=ExtResource("17_ad5ke")]
 
@@ -74,14 +81,38 @@ transform = Transform3D(1.2863669, 0, 0, 0, 1.2863669, 0, 0, 0, 1.2863669, 0.184
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1650584819]
 transform = Transform3D(1, 0, 0, 0, -5.9604645e-08, 1, 0, -1, -5.9604645e-08, 0.99989337, 2.1578813, 0.8673301)
+light_color = Color(0.5335164, 0.5813597, 0.45895183, 1)
+light_energy = 1.87
+shadow_enabled = true
+shadow_blur = 3.871
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="." unique_id=1552460268]
+transform = Transform3D(1, 0, 0, 0, -5.9604645e-08, 1, 0, -1, -5.9604645e-08, 0.99989337, 2.1578813, 0.8673301)
+visible = false
 light_color = Color(0.54509807, 0.6039216, 0.32156864, 1)
 light_energy = 1.87
 shadow_enabled = true
 shadow_blur = 3.871
 
+[node name="SpotLight3D3" type="SpotLight3D" parent="." unique_id=1356558722]
+transform = Transform3D(1, 0, 0, 0, -5.9604645e-08, 1, 0, -1, -5.9604645e-08, -0.48901767, 1.8875356, -0.73493993)
+light_color = Color(0.5874916, 0.5616222, 0.5765954, 1)
+light_energy = 1.87
+shadow_enabled = true
+shadow_blur = 3.871
+spot_angle = 30.858196
+
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=685202759]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.482286, 0)
+visible = false
 light_color = Color(0.8280106, 0.88542116, 0.6407151, 1)
+light_energy = 0.615
+shadow_enabled = true
+shadow_blur = 2.386
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=1455190806]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.580081, 0.8942795, 0.72776294)
+light_color = Color(0.6207517, 0.36556292, 0.999989, 1)
 light_energy = 0.615
 shadow_enabled = true
 shadow_blur = 2.386
@@ -114,3 +145,26 @@ environment = SubResource("Environment_mmer6")
 [node name="window1Glass2" parent="Frame" unique_id=398134466 instance=ExtResource("24_mxc3r")]
 
 [node name="window2Glass2" parent="Frame" unique_id=1863832392 instance=ExtResource("25_3l0vr")]
+
+[node name="Player" type="Node3D" parent="." unique_id=1424038288]
+transform = Transform3D(1, 0, 0, 0, 0.9260664, 0.37736055, 0, -0.37736055, 0.9260664, 1.2134559, 1.0158107, 0.71174634)
+
+[node name="DeckHand" parent="Player" unique_id=1660543274 instance=ExtResource("26_xi46d")]
+transform = Transform3D(1, 0, 0, 0, 0.97814864, 0.20791191, 0, -0.20791191, 0.97814864, -0.27478188, -0.30934125, 0.37508)
+
+[node name="PlayerCamera" type="Camera3D" parent="Player" unique_id=28946434]
+transform = Transform3D(1, 0, 0, 0, 0.97814775, 0.20791158, 0, -0.20791158, 0.97814775, -0.3269025, 0.109654725, 0.82964635)
+script = ExtResource("27_qsvcv")
+metadata/_custom_type_script = "uid://dwjh7mp2ee40e"
+
+[node name="CardTablePlacer" type="Area3D" parent="Player" unique_id=1562658038]
+transform = Transform3D(1, 0, 0, 0, 0.92606735, -0.37736115, 0, 0.37736115, 0.92606735, -0.29577398, -0.4867871, 0.10210943)
+script = ExtResource("28_c6vm0")
+player_controlled = true
+metadata/_custom_type_script = "uid://db4f5b4thswif"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/CardTablePlacer" unique_id=2024441164]
+shape = SubResource("BoxShape3D_7ky1m")
+
+[node name="CardSpawnerPosition" type="Marker3D" parent="Player/CardTablePlacer" unique_id=1985255473]
+transform = Transform3D(1, 0, 0, 0, -4.371134e-08, 1, 0, -1, -4.371134e-08, 0, 0.16886055, 0.13894618)
