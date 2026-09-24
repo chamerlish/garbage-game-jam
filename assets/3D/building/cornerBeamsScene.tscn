@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://03fd4ua2vwdo"]
+
+[ext_resource type="PackedScene" uid="uid://dcxb0wfou04vo" path="res://assets/3D/building/cornerBeams.glb" id="1_l8vxm"]
+[ext_resource type="Texture2D" uid="uid://crw53cre30o6l" path="res://assets/3D/building/cornerBeams_Wood077_1K-JPG_Color.jpg" id="2_2l3wn"]
+[ext_resource type="Texture2D" uid="uid://cvgr3lunt8848" path="res://assets/3D/building/cornerBeams_Wood077_1K-JPG_NormalGL.jpg" id="3_u6lbj"]
+[ext_resource type="Texture2D" uid="uid://c600ogopf33td" path="res://assets/3D/building/cornerBeams_Wood077_1K-JPG_Roughness.png" id="4_b88j1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8vxm"]
+albedo_texture = ExtResource("2_2l3wn")
+roughness_texture = ExtResource("4_b88j1")
+normal_enabled = true
+normal_texture = ExtResource("3_u6lbj")
+uv1_triplanar = true
+
+[node name="cornerBeams2" unique_id=273404664 instance=ExtResource("1_l8vxm")]
+
+[node name="cornerBeams" parent="." index="0" unique_id=119842675]
+surface_material_override/0 = SubResource("StandardMaterial3D_l8vxm")

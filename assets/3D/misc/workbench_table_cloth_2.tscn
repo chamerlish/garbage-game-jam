@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bu7hikv8j1w43"]
+
+[ext_resource type="PackedScene" uid="uid://b2px5xg82xxr1" path="res://assets/3D/misc/workbenchTableCloth.glb" id="1_aarmg"]
+[ext_resource type="Texture2D" uid="uid://i2tfgu5vk53n" path="res://assets/3D/misc/workbenchTableCloth_hut4tex_tablecloths_BaseColor.png" id="2_8cen3"]
+[ext_resource type="Texture2D" uid="uid://k1epeb0013jm" path="res://assets/3D/misc/workbenchTableCloth_hut4tex_tablecloths_Normal.png" id="3_vdxsc"]
+[ext_resource type="Texture2D" uid="uid://b8lcbhyr6c5no" path="res://assets/3D/misc/workbenchTableCloth_hut4tex_tablecloths_Metallic-hut4tex_tablecloths_Roughness.png" id="4_wiju8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mmer6"]
+transparency = 1
+albedo_texture = ExtResource("2_8cen3")
+roughness_texture = ExtResource("4_wiju8")
+normal_enabled = true
+normal_texture = ExtResource("3_vdxsc")
+
+[node name="workbenchTableCloth2" unique_id=1523328894 instance=ExtResource("1_aarmg")]
+
+[node name="workbenchTableCloth" parent="." index="0" unique_id=1406739127]
+surface_material_override/0 = SubResource("StandardMaterial3D_mmer6")

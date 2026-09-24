@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dhpyttfwouw4k"]
+
+[ext_resource type="PackedScene" uid="uid://dpk218cv13067" path="res://assets/3D/building/window1Glass.glb" id="1_k60vw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k60vw"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(0.13333334, 0.13725491, 0.11764706, 1)
+
+[node name="window1Glass2" unique_id=398134466 instance=ExtResource("1_k60vw")]
+
+[node name="window1Glass" parent="." index="0" unique_id=1093182487]
+surface_material_override/0 = SubResource("StandardMaterial3D_k60vw")

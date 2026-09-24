@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://d2gebsscsxnr"]
+
+[ext_resource type="PackedScene" uid="uid://bpwd0b2j1be81" path="res://assets/3D/building/curtain2.glb" id="1_h0q5u"]
+[ext_resource type="Texture2D" uid="uid://doy1wdia4jlgh" path="res://assets/3D/building/curtain2_hut4tex_curtains_BaseColor.png" id="2_5nxnc"]
+[ext_resource type="Texture2D" uid="uid://jk2fd05nqc3b" path="res://assets/3D/building/curtain2_hut4tex_curtains_Normal.png" id="3_cqoaj"]
+[ext_resource type="Texture2D" uid="uid://cxesgdqsuk2hu" path="res://assets/3D/building/curtain2_hut4tex_curtains_Metallic.png-hut4tex_curtains_Roughness.png" id="4_wwrc6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_44bdb"]
+transparency = 1
+albedo_texture = ExtResource("2_5nxnc")
+roughness_texture = ExtResource("4_wwrc6")
+normal_enabled = true
+normal_texture = ExtResource("3_cqoaj")
+
+[node name="curtain22" unique_id=629205068 instance=ExtResource("1_h0q5u")]
+
+[node name="curtain2" parent="." index="0" unique_id=317469249]
+surface_material_override/0 = SubResource("StandardMaterial3D_44bdb")

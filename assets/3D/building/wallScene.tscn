@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://brs1ptg5agl47"]
+
+[ext_resource type="PackedScene" uid="uid://btvukqg3g7pnb" path="res://assets/3D/building/walls.glb" id="1_mneyi"]
+[ext_resource type="Texture2D" uid="uid://bkw55gnvoyfev" path="res://assets/3D/building/walls_Planks013_1K-JPG_Color.jpg" id="2_1eldm"]
+[ext_resource type="Texture2D" uid="uid://rwpc0hhqioc" path="res://assets/3D/building/walls_Planks013_1K-JPG_NormalGL.jpg" id="3_hspkt"]
+[ext_resource type="Texture2D" uid="uid://mnkmq8igjncf" path="res://assets/3D/building/walls_Planks013_1K-JPG_Metalness-Planks013_1K-JPG_Roughness.png" id="4_qd6v7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k0qij"]
+albedo_texture = ExtResource("2_1eldm")
+roughness_texture = ExtResource("4_qd6v7")
+normal_enabled = true
+normal_texture = ExtResource("3_hspkt")
+uv1_triplanar = true
+
+[node name="walls2" unique_id=973643793 instance=ExtResource("1_mneyi")]
+
+[node name="walls" parent="." index="0" unique_id=2064197483]
+surface_material_override/0 = SubResource("StandardMaterial3D_k0qij")
